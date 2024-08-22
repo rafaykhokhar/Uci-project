@@ -74,6 +74,7 @@ router.get('/:medicalRecordNumber/summarize', async (req, res) => {
 });
 
 // Endpoint to predict medication approval
+// Endpoint to predict medication approval
 router.post('/:medicalRecordNumber/predict-approval', async (req, res) => {
     try {
         const patient = await Patient.findOne({ medicalRecordNumber: req.params.medicalRecordNumber });
@@ -82,7 +83,9 @@ router.post('/:medicalRecordNumber/predict-approval', async (req, res) => {
         }
 
         const recommendedMedication = req.body.recommendedMedication;
-        const prediction = await predictMedicationApproval(patient, recommendedMedication);
+        const insuranceType = req.body.insuranceType;  // Add this line to receive insuranceType from the request body
+
+        const prediction = await predictMedicationApproval(patient, recommendedMedication, insuranceType);
         res.status(200).json({ prediction });
     } catch (err) {
         res.status(500).json({ error: err.message });

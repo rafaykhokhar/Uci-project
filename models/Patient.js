@@ -15,7 +15,8 @@ const PatientSchema = new Schema({
         chronicConditions: [{ type: String }],
         pastMedicalHistory: [{ type: String }],
         surgicalHistory: [{ type: String }],
-        allergies: [{ type: String }]
+        allergies: [{ type: String }],
+        familyHistory: [{ type: String }]
     },
     vitalSigns: {
         height: { type: String },
@@ -32,21 +33,24 @@ const PatientSchema = new Schema({
         recentHemoglobinA1c: { type: String },
         bloodGlucoseMonitoring: {
             fastingBloodGlucose: { type: String },
-            postprandialBloodGlucose: { type: String }
+            postprandialBloodGlucose: { type: String },
+            timeInRange: { type: String }
         }
     },
     lifestyleFactors: {
         diet: { type: String },
         exercise: { type: String },
         smokingStatus: { type: String },
-        alcoholUse: { type: String }
+        alcoholUse: { type: String },
+        occupation: { type: String }
     },
     physicalExamination: {
         generalAppearance: { type: String },
         cardiovascular: { type: String },
         respiratory: { type: String },
         abdomen: { type: String },
-        extremities: { type: String }
+        extremities: { type: String },
+        relevantFindings: [{ type: String }]
     },
     laboratoryResults: {
         lipidProfile: {
@@ -58,15 +62,24 @@ const PatientSchema = new Schema({
         kidneyFunctionTests: {
             serumCreatinine: { type: String },
             eGFR: { type: String }
+        },
+        hepaticPanel: { 
+            AST: { type: String },
+            ALT: { type: String },
+            ALP: { type: String },
+            bilirubin: { type: String }
         }
     },
     assessmentAndPlan: {
         assessment: [{ type: String }],
-        plan: [{ type: String }]
+        plan: [{ type: String }],
+        riskForPancreatitis: { type: Boolean },
+        potentialRisks: [{ type: String }]
     },
     followUp: {
         nextAppointment: { type: Date },
-        physicianSignature: { type: String }
+        physicianSignature: { type: String },
+        followUpRecommendations: [{ type: String }]
     }
 }, { timestamps: true });
 

@@ -1,5 +1,4 @@
 const OpenAI = require('openai');
-
 // Configure the OpenAI client
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY, // Ensure your .env file has the correct API key format
@@ -31,7 +30,7 @@ async function summarizePatientInfo(patientData) {
 
     try {
         const response = await openai.chat.completions.create({
-            model: "gpt-4",  // Use the correct chat model
+            model: "gpt-4o",  
             messages: messages,
             max_tokens: 150,
         });
@@ -43,8 +42,7 @@ async function summarizePatientInfo(patientData) {
     }
 }
 
-// Function to predict medication approval
-async function predictMedicationApproval(patientData, recommendedMedication) {
+async function predictMedicationApproval(patientData, recommendedMedication, insuranceType) {
     const messages = [
         {
             role: "system",
@@ -64,7 +62,35 @@ async function predictMedicationApproval(patientData, recommendedMedication) {
             - Surgical History: ${patientData.medicalHistory.surgicalHistory.join(', ') || 'None'}
             - Allergies: ${patientData.medicalHistory.allergies.join(', ') || 'None'}
             - Insurance Provider: ${patientData.insurance}
+            - Insurance Type: ${insuranceType}
             
+            Vital Signs:
+            - Height: ${patientData.vitalSigns.height || 'Not available'}
+            - Weight: ${patientData.vitalSigns.weight || 'Not available'}
+            - BMI: ${patientData.vitalSigns.BMI || 'Not available'}
+            - Blood Pressure: ${patientData.vitalSigns.bloodPressure || 'Not available'}
+            - Heart Rate: ${patientData.vitalSigns.heartRate || 'Not available'}
+            - Respiratory Rate: ${patientData.vitalSigns.respiratoryRate || 'Not available'}
+            - Temperature: ${patientData.vitalSigns.temperature || 'Not available'}
+
+            Laboratory Results:
+            ${patientData.laboratoryResults.lipidProfile ? `
+            - Lipid Profile:
+                - Total Cholesterol: ${patientData.laboratoryResults.lipidProfile.totalCholesterol || 'Not available'}
+                - LDL: ${patientData.laboratoryResults.lipidProfile.LDL || 'Not available'}
+                - HDL: ${patientData.laboratoryResults.lipidProfile.HDL || 'Not available'}
+                - Triglycerides: ${patientData.laboratoryResults.lipidProfile.triglycerides || 'Not available'}` : 'None'}
+            ${patientData.laboratoryResults.kidneyFunctionTests ? `
+            - Kidney Function Tests:
+                - Serum Creatinine: ${patientData.laboratoryResults.kidneyFunctionTests.serumCreatinine || 'Not available'}
+                - eGFR: ${patientData.laboratoryResults.kidneyFunctionTests.eGFR || 'Not available'}` : ''}
+            ${patientData.laboratoryResults.hepaticPanel ? `
+            - Hepatic Panel:
+                - AST: ${patientData.laboratoryResults.hepaticPanel.AST || 'Not available'}
+                - ALT: ${patientData.laboratoryResults.hepaticPanel.ALT || 'Not available'}
+                - ALP: ${patientData.laboratoryResults.hepaticPanel.ALP || 'Not available'}
+                - Bilirubin: ${patientData.laboratoryResults.hepaticPanel.bilirubin || 'Not available'}` : 'None'}
+
             Recommended Medication: ${recommendedMedication}
             
             Will this medication likely be approved? Why or why not? Provide alternative suggestions if necessary.
@@ -74,7 +100,7 @@ async function predictMedicationApproval(patientData, recommendedMedication) {
 
     try {
         const response = await openai.chat.completions.create({
-            model: "gpt-4",  // Use the correct chat model
+            model: "gpt-4o",
             messages: messages,
             max_tokens: 200,
         });

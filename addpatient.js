@@ -8,169 +8,273 @@ connectDB();
 
 async function addPatients() {
     const patients = [
+        // Patient A: Kristen Derkston
         {
-            name: "Jane Doe",
-            dateOfBirth: new Date("1980-03-15"),
+            name: "Kristen Derkston",
+            dateOfBirth: new Date("1988-10-02"),
             gender: "Female",
-            age: 44,
-            medicalRecordNumber: "01",
-            insurancePolicyNumber: "BS123", // Unique insurance policy number
-            primaryCarePhysician: "Dr. John Smith",
-            dateOfVisit: new Date("2024-08-13"),
-            insurance: "Blue Shield of California",
+            age: 36,
+            medicalRecordNumber: "9876652",
+            insurancePolicyNumber: "BCBS123",
+            primaryCarePhysician: "Dr. Mark Mackenzie",
+            dateOfVisit: new Date("2024-08-20"),
+            insurance: "Blue Cross/Blue Shield",
             medicalHistory: {
-                chronicConditions: [
-                    "Type 2 Diabetes Mellitus",
-                    "Obesity (BMI: 30)"
-                ],
-                pastMedicalHistory: [
-                    "Hypertension (controlled with medication)",
-                    "Hyperlipidemia (high cholesterol)"
-                ],
-                surgicalHistory: [
-                    "Appendectomy (2005)"
-                ],
-                allergies: [
-                    "No known drug allergies"
-                ]
+                chronicConditions: ["Type 2 Diabetes Mellitus", "Hyperlipidemia"],
+                pastMedicalHistory: [],
+                surgicalHistory: [],
+                allergies: ["No known drug allergies"],
+                familyHistory: [] // Assuming no family history provided
             },
             vitalSigns: {
-                height: "5 feet 6 inches (167 cm)",
-                weight: "180 lbs (81.6 kg)",
-                BMI: 30,
-                bloodPressure: "130/85 mmHg",
-                heartRate: "78 bpm",
-                respiratoryRate: "16 breaths/min",
-                temperature: "98.6°F (37°C)"
+                height: "Not available", // Not provided
+                weight: "Not available", // Not provided
+                BMI: 0, // Not provided
+                bloodPressure: "119/84",
+                heartRate: "78",
+                respiratoryRate: "16",
+                temperature: "98.1F"
             },
             diabetesManagement: {
-                diagnosis: "Type 2 Diabetes Mellitus (diagnosed in 2015)",
-                currentMedications: [
-                    "Metformin 1000 mg twice daily",
-                    "Lisinopril 10 mg daily (for hypertension)",
-                    "Atorvastatin 20 mg daily (for hyperlipidemia)"
-                ],
-                recentHemoglobinA1c: "8.2% (as of July 2024)",
+                diagnosis: "Type 2 Diabetes Mellitus",
+                currentMedications: ["Metformin 1000 mg twice daily", "Atorvastatin 20mg daily"],
+                recentHemoglobinA1c: "7.3% (7/6/2024)",
                 bloodGlucoseMonitoring: {
-                    fastingBloodGlucose: "160 mg/dL",
-                    postprandialBloodGlucose: "180 mg/dL"
+                    fastingBloodGlucose: "111 mg/dL (7/6/2024)",
+                    postprandialBloodGlucose: "Not available",
+                    timeInRange: "Not available" // Not provided
                 }
             },
             lifestyleFactors: {
-                diet: "Moderately adheres to a diabetic-friendly diet with high carbohydrate intake.",
-                exercise: "Engages in 30 minutes of brisk walking when she feels like it",
-                smokingStatus: "Non-smoker",
-                alcoholUse: "Occasional (1-2 drinks per week)"
+                diet: "Not available", // Not provided
+                exercise: "Not available", // Not provided
+                smokingStatus: "Not available", // Not provided
+                alcoholUse: "Not available", // Not provided
+                occupation: "Not available" // Not provided
             },
             physicalExamination: {
-                generalAppearance: "Overweight, appears well-nourished",
-                cardiovascular: "Regular rhythm, no murmurs",
-                respiratory: "Clear breath sounds bilaterally",
-                abdomen: "Soft, non-tender, no hepatomegaly or splenomegaly",
-                extremities: "No edema, pulses intact"
+                generalAppearance: "Patient is well-nourished, alert and oriented.",
+                cardiovascular: "Not available", // Not provided
+                respiratory: "Not available", // Not provided
+                abdomen: "Not available", // Not provided
+                extremities: "Not available", // Not provided
+                relevantFindings: ["No signs of acute distress. Examination findings are otherwise within normal limits."]
             },
             laboratoryResults: {
                 lipidProfile: {
-                    totalCholesterol: "210 mg/dL",
-                    LDL: "130 mg/dL",
-                    HDL: "50 mg/dL",
-                    triglycerides: "160 mg/dL"
+                    totalCholesterol: "Not available", // Not provided
+                    LDL: "Not available", // Not provided
+                    HDL: "Not available", // Not provided
+                    triglycerides: "Not available" // Not provided
                 },
                 kidneyFunctionTests: {
-                    serumCreatinine: "0.8 mg/dL",
-                    eGFR: "90 mL/min/1.73 m²"
+                    serumCreatinine: "Not available", // Not provided
+                    eGFR: "Not available" // Not provided
+                },
+                hepaticPanel: {
+                    AST: "Not available", // Not provided
+                    ALT: "Not available", // Not provided
+                    ALP: "Not available", // Not provided
+                    bilirubin: "Not available" // Not provided
                 }
             },
             assessmentAndPlan: {
                 assessment: [
-                    "Type 2 Diabetes Mellitus, suboptimal glycemic control (A1c 8.2%)",
-                    "Obesity (BMI 30), contributing to diabetes and hypertension",
-                    "Hypertension and hyperlipidemia, well-managed with current medications"
+                    "Type 2 Diabetes Mellitus: Suboptimal HgbA1c levels.",
+                    "Delayed Menstrual Cycle: Recent change in menstrual cycle may be related to metabolic disturbances or other endocrine issues; further evaluation may be necessary."
                 ],
                 plan: [
-                    "Continue current medications. Consider adding a GLP-1 receptor agonist for better glycemic control and potential weight loss. Schedule follow-up A1c test in 3 months.",
-                    "Recommend dietary counseling with a registered dietitian. Increase physical activity to 150 minutes per week. Consider referral to a weight management specialist if no significant progress is noted.",
-                    "Continue lisinopril and atorvastatin. Recheck lipid profile and blood pressure in 3 months.",
-                    "Annual eye exam to screen for diabetic retinopathy. Foot exam every 6 months to check for diabetic complications. Encourage routine screening for diabetic nephropathy."
-                ]
+                    "Initiate Ozempic (Semaglutide) Therapy: Considering the patient's difficulty achieving glycemic control with current therapy the addition of Ozempic is indicated.",
+                    "Evaluate Menstrual Irregularity: Recommend gynecological evaluation to rule out possible endocrine or other underlying issues affecting menstrual cycle.",
+                    "Schedule follow-up visit in [number] weeks to assess response to new medication and adjust treatment plan as needed."
+                ],
+                riskForPancreatitis: false, // Assuming not relevant for this patient
+                potentialRisks: ["Possibility of pregnancy should be considered."] // Assuming additional risk
             },
             followUp: {
-                nextAppointment: new Date("2024-11-13"),
-                physicianSignature: "Dr. John Smith, MD"
+                nextAppointment: new Date("2024-09-20"), // Assuming follow-up in 4 weeks
+                physicianSignature: "Dr. Richard Listonbon MD",
+                followUpRecommendations: ["Monitor blood glucose levels and menstrual cycle, reassess in 4 weeks."]
             }
         },
+        // Patient B: Jack Gonzales
         {
-            name: "Michael Brown",
-            dateOfBirth: new Date("1985-07-22"),
+            name: "Jack Gonzales",
+            dateOfBirth: new Date("1990-03-01"), // Assuming approximate date
             gender: "Male",
-            age: 39,
-            medicalRecordNumber: "02",
-            insurancePolicyNumber: "BS124", // Unique insurance policy number
-            primaryCarePhysician: "Dr. Emily Carter",
-            dateOfVisit: new Date("2024-08-13"),
-            insurance: "Blue Shield of California",
+            age: 34,
+            medicalRecordNumber: "JG342",
+            insurancePolicyNumber: "UHC456",
+            primaryCarePhysician: "Dr. Sarah Martin",
+            dateOfVisit: new Date("2024-08-20"),
+            insurance: "United Health Care PPO",
             medicalHistory: {
-                chronicConditions: [
-                    "Overweight (BMI: 29), No diagnosis of diabetes"
-                ],
-                pastMedicalHistory: [
-                    "No history of diabetes, cardiovascular disease, or chronic illnesses"
-                ],
-                surgicalHistory: [
-                    "No previous surgeries"
-                ],
-                allergies: [
-                    "No known drug allergies"
-                ]
+                chronicConditions: ["Type 1 Diabetes Mellitus", "Mild Diabetic Retinopathy", "Celiac Disease"],
+                pastMedicalHistory: [],
+                surgicalHistory: [],
+                allergies: ["No known drug allergies"],
+                familyHistory: [] // Assuming no family history provided
             },
             vitalSigns: {
-                height: "6 feet (183 cm)",
-                weight: "220 lbs (100 kg)",
-                BMI: 29,
-                bloodPressure: "125/80 mmHg",
-                heartRate: "72 bpm",
-                respiratoryRate: "18 breaths/min",
-                temperature: "98.7°F (37°C)"
+                height: "180 cm",
+                weight: "85 kg",
+                BMI: 26.2,
+                bloodPressure: "120/75",
+                heartRate: "70",
+                respiratoryRate: "14",
+                temperature: "98.0F"
+            },
+            diabetesManagement: {
+                diagnosis: "Type 1 Diabetes Mellitus",
+                currentMedications: ["Insulin: Tandem insulin pump with Humalog approximately 40 units per day."],
+                recentHemoglobinA1c: "7.5% (2024)",
+                bloodGlucoseMonitoring: {
+                    fastingBloodGlucose: "130 mg/dL",
+                    postprandialBloodGlucose: "180-200 mg/dL",
+                    timeInRange: "65%"
+                }
             },
             lifestyleFactors: {
-                diet: "Reports an average diet with frequent fast-food consumption and occasional home-cooked meals. Interested in improving eating habits.",
-                exercise: "Sedentary lifestyle; no regular exercise routine",
-                smokingStatus: "Non-smoker",
-                alcoholUse: "Social drinker (2-3 drinks per week)"
+                diet: "Adheres to a gluten-free diet with a focus on low-carb meals for blood glucose management.",
+                exercise: "Moderately active; enjoys cycling on weekends and walks daily.",
+                smokingStatus: "Never smoked",
+                alcoholUse: "Occasional 1-2 drinks per month",
+                occupation: "Software Developer"
             },
             physicalExamination: {
-                generalAppearance: "Overweight, appears well-nourished",
-                cardiovascular: "Regular rhythm, no murmurs or irregularities",
-                respiratory: "Clear breath sounds bilaterally",
-                abdomen: "Soft, non-tender, no signs of hepatomegaly or splenomegaly",
-                extremities: "No edema, pulses intact"
+                generalAppearance: "Patient is alert and oriented.",
+                cardiovascular: "Normal heart sounds, no murmurs.",
+                respiratory: "Clear to auscultation bilaterally.",
+                abdomen: "Soft, non-tender, no hepatomegaly.",
+                extremities: "No edema, pulses intact.",
+                relevantFindings: []
             },
             laboratoryResults: {
                 lipidProfile: {
-                    totalCholesterol: "210 mg/dL",
-                    LDL: "140 mg/dL",
-                    HDL: "45 mg/dL",
-                    triglycerides: "170 mg/dL"
+                    totalCholesterol: "180 mg/dL",
+                    LDL: "95 mg/dL",
+                    HDL: "50 mg/dL",
+                    triglycerides: "140 mg/dL"
                 },
                 kidneyFunctionTests: {
-                    serumCreatinine: "1.9 mg/dL",
-                    eGFR: "92 mL/min/1.73 m²"
+                    serumCreatinine: "0.9 mg/dL",
+                    eGFR: "90 mL/min/1.73 m²"
+                },
+                hepaticPanel: {
+                    AST: "Not available", // Not provided
+                    ALT: "Not available", // Not provided
+                    ALP: "Not available", // Not provided
+                    bilirubin: "Not available" // Not provided
                 }
             },
             assessmentAndPlan: {
                 assessment: [
-                    "Overweight (BMI 29), with potential risk factors for developing metabolic syndrome or other health issues",
-                    "Lipid profile indicates elevated LDL and triglycerides, requiring lifestyle modification"
+                    "Type 1 Diabetes Mellitus with suboptimal glycemic control.",
+                    "Mild Diabetic Retinopathy: Requires ongoing ophthalmologic monitoring.",
+                    "Celiac Disease: Well-managed with a strict gluten-free diet."
                 ],
                 plan: [
-                    "Recommend a comprehensive weight loss program, including dietary counseling with a registered dietitian and a structured exercise plan. Aim for gradual weight loss of 1-2 lbs per week.",
-                    "Advise dietary changes to reduce cholesterol and triglycerides. Encourage increased physical activity to improve lipid profile. Consider follow-up lipid profile in 3 months.",
-                    "Regular monitoring of blood pressure and lipid levels. Schedule annual physical exams and encourage routine screenings for cardiovascular health."
-                ]
+                    "Consideration of Ozempic (Semaglutide) Therapy: Initiate Ozempic at 0.25 mg weekly with a plan to increase the dose gradually to 2.5 mg as tolerated.",
+                    "Continue current insulin regimen via Tandem insulin pump, adjust insulin dosages as needed.",
+                    "Follow-up in 4-6 weeks to assess the patient's response to Ozempic and adjust treatment plan as necessary."
+                ],
+                riskForPancreatitis: false, // Assuming not relevant for this patient
+                potentialRisks: []
             },
             followUp: {
-                nextAppointment: new Date("2024-11-13"),
-                physicianSignature: "Dr. Emily Carter, MD"
+                nextAppointment: new Date("2024-10-01"), // Assuming follow-up in 6 weeks
+                physicianSignature: "Dr. Sarah Martin",
+                followUpRecommendations: ["Monitor blood glucose levels closely, reassess retinopathy and celiac disease management."]
+            }
+        },
+        // Patient C: Linda Patel
+        {
+            name: "Linda Patel",
+            dateOfBirth: new Date("1972-03-15"), // Assuming approximate date
+            gender: "Female",
+            age: 52,
+            medicalRecordNumber: "LP522",
+            insurancePolicyNumber: "CIGNA789",
+            primaryCarePhysician: "Dr. Amanda Lee",
+            dateOfVisit: new Date("2024-08-20"),
+            insurance: "Cigna EPO",
+            medicalHistory: {
+                chronicConditions: ["Type 2 Diabetes", "Hypertension", "Hyperlipidemia"],
+                pastMedicalHistory: ["Family history of medullary thyroid cancer."],
+                surgicalHistory: [],
+                allergies: ["No known drug allergies"],
+                familyHistory: ["Mother passed away from medullary thyroid cancer at age 65."]
+            },
+            vitalSigns: {
+                height: "165 cm",
+                weight: "90 kg",
+                BMI: 33,
+                bloodPressure: "130/85",
+                heartRate: "78",
+                respiratoryRate: "16",
+                temperature: "98.4F"
+            },
+            diabetesManagement: {
+                diagnosis: "Type 2 Diabetes",
+                currentMedications: ["Metformin 1000 mg twice daily", "Atorvastatin 20 mg once daily", "Lisinopril 10 mg once daily"],
+                recentHemoglobinA1c: "8.2%",
+                bloodGlucoseMonitoring: {
+                    fastingBloodGlucose: "150 mg/dL",
+                    postprandialBloodGlucose: "200 mg/dL",
+                    timeInRange: "Not available" // Not provided
+                }
+            },
+            lifestyleFactors: {
+                diet: "Patient attempts a low-carbohydrate diet but struggles with consistency.",
+                exercise: "Sedentary lifestyle; occasional walking but no regular exercise routine.",
+                smokingStatus: "Never smoked",
+                alcoholUse: "Social drinker 1-2 drinks per week",
+                occupation: "Office Manager"
+            },
+            physicalExamination: {
+                generalAppearance: "Overweight, appears well-nourished.",
+                cardiovascular: "Regular rhythm, no murmurs.",
+                respiratory: "Clear breath sounds bilaterally.",
+                abdomen: "Soft, non-tender.",
+                extremities: "No edema, pulses intact.",
+                relevantFindings: []
+            },
+            laboratoryResults: {
+                lipidProfile: {
+                    totalCholesterol: "210 mg/dL",
+                    LDL: "110 mg/dL",
+                    HDL: "50 mg/dL",
+                    triglycerides: "180 mg/dL"
+                },
+                kidneyFunctionTests: {
+                    serumCreatinine: "0.9 mg/dL",
+                    eGFR: "85 mL/min/1.73 m²"
+                },
+                hepaticPanel: {
+                    AST: "Not available", // Not provided
+                    ALT: "Not available", // Not provided
+                    ALP: "Not available", // Not provided
+                    bilirubin: "Not available" // Not provided
+                }
+            },
+            assessmentAndPlan: {
+                assessment: [
+                    "Type 2 Diabetes: Suboptimal control with current therapy.",
+                    "Hypertension and Hyperlipidemia: Managed with current medications.",
+                    "Family history of medullary thyroid cancer: Monitor closely."
+                ],
+                plan: [
+                    "Introduction of Ozempic (Semaglutide) Therapy: Initiate with 0.25 mg once weekly, gradually increasing to 2.4 mg.",
+                    "Dietary and Lifestyle Interventions: Referral to a dietitian for personalized low-carbohydrate diet planning and encourage regular physical activity.",
+                    "Follow-up in 4 weeks to assess the patient’s response to Ozempic and make necessary adjustments."
+                ],
+                riskForPancreatitis: false, // Assuming not relevant for this patient
+                potentialRisks: ["Monitor for signs of thyroid cancer given family history."]
+            },
+            followUp: {
+                nextAppointment: new Date("2024-09-20"), // Assuming follow-up in 4 weeks
+                physicianSignature: "Dr. Amanda Lee",
+                followUpRecommendations: ["Reassess metabolic control and monitor for any signs of thyroid issues."]
             }
         }
     ];
